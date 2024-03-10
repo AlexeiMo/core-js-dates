@@ -155,8 +155,14 @@ function isDateInPeriod(date, period) {
  */
 function formatDate(date) {
   const formatObject = new Intl.DateTimeFormat('en', {
-    timeStyle: 'medium',
-    dateStyle: 'short',
+    month: 'numeric',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true,
+    timeZone: 'UTC',
   });
   return formatObject.format(new Date(date));
 }
