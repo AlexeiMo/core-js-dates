@@ -220,9 +220,6 @@ function getWeekNumberByDate(date) {
 
   date.setHours(date.getHours() + 3);
 
-  console.log(date);
-  console.log(startDate);
-
   // const weekDay = startDate.getDay();
   // if (weekDay > 1) {
   //   let dateToSet = startDate.getDate();
