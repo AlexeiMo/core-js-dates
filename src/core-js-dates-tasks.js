@@ -219,21 +219,19 @@ function getWeekNumberByDate(date) {
   const startDate = new Date(date.getFullYear(), 0, 1, 3);
 
   date.setHours(date.getHours() + 3);
+  let weekNum = 1;
+  let weekDay = startDate.getDay();
+  if (weekDay !== 1) {
+    weekNum += 1;
+    weekDay = weekDay === 0 ? weekDay : weekDay - 1;
+    let dateToSet = startDate.getDate();
+    dateToSet += ((6 - weekDay) % 6) + 1;
+    startDate.setDate(dateToSet);
+  }
 
-  // const weekDay = startDate.getDay();
-  // if (weekDay > 1) {
-  //   let dateToSet = startDate.getDate();
-  //   dateToSet += 7 - weekDay + 1;
-  //   startDate.setDate(dateToSet);
-  // } else if (weekDay < 1) {
-  //   let dateToSet = startDate.getDate();
-  //   dateToSet += 1;
-  //   startDate.setDate(dateToSet);
-  // }
-  const diff =
-    Math.floor((date.getTime() - startDate.getTime()) / 86400000 / 7) + 1;
+  weekNum += Math.floor((date - startDate) / 86400000 / 7);
 
-  return diff;
+  return weekNum;
 }
 
 /**
